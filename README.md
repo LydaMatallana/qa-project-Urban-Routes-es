@@ -32,7 +32,16 @@ A continuación, te indico los software y herramientas, que necesitas para insta
 
 3.Selenium
 
-3.GitHub
+4.GitHub
+
+5.Comando para ejecutar proyecto: pytest folder/de/proyecto/tests.py
+
+6.El proyecto se compone de dos archivos:
+
+a. data.py: En este archivo están almacenados los datos de prueba que se requieren para los test.
+
+b. main.py: En este archivo se encuentran los localizadores, las funciones y las pruebas.
+
 
 
 ## Construido Con:

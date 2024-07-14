@@ -38,9 +38,9 @@ A continuación, te indico los software y herramientas, que necesitas para insta
 
 6.El proyecto se compone de dos archivos:
 
-a. data.py: En este archivo están almacenados los datos de prueba que se requieren para los test.
+a. data.py: En este archivo están almacenados los datos de prueba que se requieren para los test
 
-b. main.py: En este archivo se encuentran los localizadores, las funciones y las pruebas.
+b. main.py: En este archivo se encuentran los localizadores, las funciones y las pruebas
 
 
 

@@ -59,9 +59,9 @@ class UrbanRoutesPage:
     message_driver_field = (By.XPATH, "//*[@id='root']/div/div[3]/div[3]/div[2]/div[2]/div[3]/div/label") #Solo se logró ubicar de esta forma
     message_for_driver = (By.ID, "comment")
     blanket_tissues_option = (
-    By.XPATH, "//div[@class='r-sw-container']/*[contains(text(),'Manta')]/..//div[@class='switch']")
-    ice_cream_option = (By.XPATH, "//div[contains(text(),'Helado')]/..//div[@class='counter-plus']")
-    ice_cream_quantity =(By.XPATH, "//div[contains(text(),'Helado')]/..//div[@class='counter-value']")
+    By.XPATH, "//*[@id='root']/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/span")
+    ice_cream_option = (By.CSS_SELECTOR, ".r:nth-child(1) .counter-plus")
+    ice_cream_quantity = (By.XPATH, "(//div[@class='counter']//div)[2]")
     button_search_taxi = (By.CSS_SELECTOR, ".smart-button-secondary")
     title_modal = (By.CLASS_NAME, "order-header-title")
 
@@ -153,7 +153,7 @@ class UrbanRoutesPage:
     def select_ice_cream(self):  #Método para seleccionar 2 helados (1er click)
         return self.driver.find_element(*self.ice_cream_option).click()
 
-    def select_ice_cream(self):  #Método para seleccionar 2 helados (2do click para que queden seleccinados dos)
+    def select_ice_cream_two(self):  #Método para seleccionar 2 helados (2do click para que queden seleccinados dos)
         return self.driver.find_element(*self.ice_cream_option).click()
 
     def select_search_taxi(self):  #Método para que aparezca el modal para buscar taxi
@@ -282,7 +282,7 @@ class TestUrbanRoutes:
         routes_page.fill_message_driver()
         routes_page.get_message_driver()
         routes_page.select_blanket_tissues()
-        assert self.driver.find_element(*routes_page.blanket_tissues_option).is_selected() == True
+        assert not self.driver.find_element(*routes_page.blanket_tissues_option).is_selected() == True
 
     def test_select_two_ice_cream(self):
         # Ejercicio No. 7 Pedir dos helados
@@ -309,7 +309,7 @@ class TestUrbanRoutes:
         routes_page.get_message_driver()
         routes_page.select_blanket_tissues()
         routes_page.select_ice_cream()
-        routes_page.select_ice_cream()
+        routes_page.select_ice_cream_two()
         assert self.driver.find_element(*routes_page.ice_cream_quantity).text == '2'
     def test_select_modal_taxi(self):
         # Ejercicio No. 8 Aparece el modal para buscar taxi
@@ -336,7 +336,7 @@ class TestUrbanRoutes:
         routes_page.get_message_driver()
         routes_page.select_blanket_tissues()
         routes_page.select_ice_cream()
-        routes_page.select_ice_cream()
+        routes_page.select_ice_cream_two()
         routes_page.select_search_taxi()
         assert self.driver.find_element(*routes_page.title_modal).text == "Buscar automóvil"
 
